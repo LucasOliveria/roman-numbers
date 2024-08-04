@@ -4,7 +4,6 @@ export class RomanNumeralConverter {
   // Atributo com mapeamento dos algarismos romanos
   private romanNumeralMappings: TRomanNumeralMapping[];
 
-
   constructor() {
     this.romanNumeralMappings = [
       { romanNumeral: 'M', value: 1000 },
