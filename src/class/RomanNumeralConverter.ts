@@ -22,27 +22,28 @@ export class RomanNumeralConverter {
     ];
   }
 
-  arabicToRoman(value: number): string {
+  arabicToRoman(value: number): TRomanNumeralMapping {
     let romanNumeral: string = "";
+    let arabicNumeral = value;
 
-    if (value > 3999) {
-      const thousands = Math.floor(value / 1000);
-      romanNumeral += `|${this.arabicToRoman(thousands)}|`; //  vinculum
-      value %= 1000;
+    if (arabicNumeral > 3999) {
+      const thousands = Math.floor(arabicNumeral / 1000);
+      romanNumeral += `|${this.arabicToRoman(thousands).romanNumeral}|`; //  vinculum
+      arabicNumeral %= 1000;
     }
 
     for (let i = 0; i < this.romanNumeralMappings.length; i++) {
-      while (value >= this.romanNumeralMappings[i].value) {
+      while (arabicNumeral >= this.romanNumeralMappings[i].value) {
         romanNumeral += this.romanNumeralMappings[i].romanNumeral;
 
-        value -= this.romanNumeralMappings[i].value;
+        arabicNumeral -= this.romanNumeralMappings[i].value;
       }
     }
 
-    return romanNumeral;
+    return { romanNumeral, value };
   }
 
-  romanToArabic(romanNumeral: string): string {
+  romanToArabic(romanNumeral: string): TRomanNumeralMapping | string {
     let arabicNumeral: number = 0
     let romanNumeralUpperCase = romanNumeral.toUpperCase();
     let errorFound = false;
@@ -88,6 +89,6 @@ export class RomanNumeralConverter {
       }
     }
 
-    return errorCount > 0 || arabicNumeral > 3999 ? `${this.arabicToRoman(arabicNumeral)} = ${arabicNumeral}` : `${romanNumeralUpperCase} = ${arabicNumeral}`
+    return errorCount > 0 || arabicNumeral > 3999 ? this.arabicToRoman(arabicNumeral) : { romanNumeral: romanNumeralUpperCase, value: arabicNumeral }
   }
 }

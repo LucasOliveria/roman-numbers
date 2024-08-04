@@ -2,7 +2,7 @@ import { RomanNumeralConverter } from "./class/RomanNumeralConverter";
 
 const conversor = new RomanNumeralConverter();
 
-// console.log(conversor.arabicToRoman(3888888));
+// console.log(conversor.arabicToRoman(1164));
 // console.log(conversor.arabicToRoman(200));
 console.log(conversor.romanToArabic("MMMVI"));
 console.log(conversor.romanToArabic("MMCMXCIX"));
