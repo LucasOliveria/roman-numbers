@@ -87,6 +87,10 @@ export class RomanNumeralConverter {
       }
     }
 
+    if (arabicNumeral === 0) {
+      return "Informe um algarismo romano válido";
+    }
+
     return this.arabicToRoman(arabicNumeral)
   }
 }
