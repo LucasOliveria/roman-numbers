@@ -47,7 +47,6 @@ export class RomanNumeralConverter {
     let arabicNumeral: number = 0
     let romanNumeralUpperCase = romanNumeral.toUpperCase();
     let errorFound = false;
-    let errorCount = 0;
 
     for (let i = 0; i < romanNumeralUpperCase.length; i++) {
       const currentNextRomanNumeral = romanNumeralUpperCase[i] + romanNumeralUpperCase[i + 1];
@@ -67,7 +66,6 @@ export class RomanNumeralConverter {
             const subtraction = nextValue.value - currentValue.value;
             arabicNumeral += subtraction;
             errorFound = true;
-            errorCount++
             i++
           }
         }
@@ -89,6 +87,6 @@ export class RomanNumeralConverter {
       }
     }
 
-    return errorCount > 0 || arabicNumeral > 3999 ? this.arabicToRoman(arabicNumeral) : { romanNumeral: romanNumeralUpperCase, value: arabicNumeral }
+    return this.arabicToRoman(arabicNumeral)
   }
 }

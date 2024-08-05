@@ -11,3 +11,4 @@ console.log(conversor.romanToArabic("IL"));
 console.log(conversor.romanToArabic("XIL"));
 console.log(conversor.romanToArabic("CIC"));
 console.log(conversor.romanToArabic("XMMMMX"));
+console.log(conversor.romanToArabic("IIII"));
